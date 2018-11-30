@@ -4,34 +4,10 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
         </Console>
-        <File name="MyFile" fileName="all.log" immediateFlush="false" append="false">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </File>
-        <File name="MyFile1" fileName="all1.log" immediateFlush="false" append="true">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </File>
-        <File name="async" fileName="async.log" immediateFlush="false" append="true">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </File>
-        <File name="htmlFile" fileName="htmlFile.html" immediateFlush="false" append="true">
-            <HTMLLayout/>
-        </File>
-        <Async name="scribeAsyncAppender" errorRef="async" bufferSize="102400" blocking="false">
-            <AppenderRef ref="async"/>
-        </Async>
-        <MyCustomAppender name="ABC"></MyCustomAppender>
     </Appenders>
     <Loggers>
         <Root level="debug">
-            <!--<AppenderRef ref="Console" />-->
-            <AppenderRef ref="MyFile"/>
-            <AppenderRef ref="scribeAsyncAppender"/>
-            <AppenderRef ref="ABC"/>
-            <AppenderRef ref="htmlFile"/>
+            <AppenderRef ref="Console" />
         </Root>
-        <Logger name="com.gxf.slf4j.HelloSlf4j" level="debug">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="MyFile1"/>
-        </Logger>
     </Loggers>
 </Configuration>
